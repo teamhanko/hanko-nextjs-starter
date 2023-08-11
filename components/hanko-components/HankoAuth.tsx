@@ -4,7 +4,7 @@ import { useEffect, useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import { register, Hanko } from "@teamhanko/hanko-elements";
 
-const hankoApi = "https://f4909e45-4802-49ad-8e0b-3d34f2b8ab32.hanko.io";
+const hankoApi = process.env.HANKO_API_URL;
 
 export default function HankoAuth() {
   const router = useRouter();
