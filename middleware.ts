@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 
 import { jwtVerify, createRemoteJWKSet } from "jose";
 
-const hankoApiUrl = "https://f4909e45-4802-49ad-8e0b-3d34f2b8ab32.hanko.io";
+const hankoApiUrl = process.env.NEXT_PUBLIC_HANKO_API_URL;
 
 export async function middleware(req: NextRequest) {
   const hanko = req.cookies.get("hanko")?.value;
