@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@teamhanko/hanko-elements':
-    specifier: ^0.8.2
-    version: 0.8.2
+    specifier: ^0.8.4
+    version: 0.8.4
   '@types/node':
     specifier: 20.4.9
     version: 20.4.9
@@ -67,10 +67,10 @@ packages:
       regenerator-runtime: 0.14.0
     dev: false
 
-  /@denysvuika/preact-translate@0.4.1(preact@10.16.0):
-    resolution: {integrity: sha512-JCgTwPd6iq0nD6betffGYT4C2mj+PYLjEPuDcMRny4Nsh4E2W7UHWD8/jHnUyGiDnt0nezqAzP0s/AB+6XMVJg==}
+  /@denysvuika/preact-translate@0.5.0(preact@10.16.0):
+    resolution: {integrity: sha512-hcWbmA5+05JRYGPhl64kDiJ+rWLOKe4tDi0y7cXVKe+hwu6H0KphyAwLvVbCSTTtnfXvAijnEZMOf/kCsdPFrQ==}
     peerDependencies:
-      preact: '>=10.0.0'
+      preact: '>=10.13.0'
     dependencies:
       preact: 10.16.0
     dev: false
@@ -284,18 +284,18 @@ packages:
       tslib: 2.6.1
     dev: false
 
-  /@teamhanko/hanko-elements@0.8.2:
-    resolution: {integrity: sha512-Y74MH5jOjGNpdRQe3WY8PchPkQ9zwAgNDYudTn0vGyvJFgdzEeOBYHGQ1e20wrxMIY/CpuykMpPjg1Oo7ignnQ==}
+  /@teamhanko/hanko-elements@0.8.4:
+    resolution: {integrity: sha512-wjZbRbXG45iPsH9D22KwFrI4nAXxX8yKO88CxGeDKXzzkwGRP+R+ysvJt/1LvRSX6sul6Wemk7osh+dZD6K8tw==}
     dependencies:
-      '@denysvuika/preact-translate': 0.4.1(preact@10.16.0)
-      '@teamhanko/hanko-frontend-sdk': 0.8.2
+      '@denysvuika/preact-translate': 0.5.0(preact@10.16.0)
+      '@teamhanko/hanko-frontend-sdk': 0.8.4
       '@teamhanko/preact-custom-element': 4.2.2(preact@10.16.0)
       classnames: 2.3.2
       preact: 10.16.0
     dev: false
 
-  /@teamhanko/hanko-frontend-sdk@0.8.2:
-    resolution: {integrity: sha512-8J6LD/tzxaqEPDu0KBxzg4DTJiv1MSyyIDuewoRnlAgmgpqxBeIStT/bFbHZNfcFmYxhDy7D18+ICLKNIUU81A==}
+  /@teamhanko/hanko-frontend-sdk@0.8.4:
+    resolution: {integrity: sha512-Lt9WnQ6Esmp+x7iGiW6nhuKqvYexXCanXH2XQETniJY9+HnXVSI5BTjuF9RlajN2/oaSzSKzW0HdHcrZWDGf5g==}
     dependencies:
       '@types/js-cookie': 3.0.3
     dev: false

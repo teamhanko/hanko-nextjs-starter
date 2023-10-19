@@ -1,4 +1,6 @@
-import HankoProfile from "@/components/hanko-components/HankoProfile";
+import dynamic from 'next/dynamic';
+
+const HankoProfile = dynamic(() => import('@/components/hanko-components/HankoProfile'), { ssr: false })
 
 const DashboardPage = () => {
   return (

@@ -1,4 +1,6 @@
-import HankoAuth from "@/components/hanko-components/HankoAuth";
+import dynamic from 'next/dynamic';
+
+const HankoAuth = dynamic(() => import('@/components/hanko-components/HankoAuth'), { ssr: false })
 
 export default function LoginPage() {
   return (
