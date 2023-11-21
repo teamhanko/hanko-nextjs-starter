@@ -3,7 +3,7 @@ import { Hanko } from "@teamhanko/hanko-elements";
 
 const hankoApi = process.env.NEXT_PUBLIC_HANKO_API_URL || "";
 
-interface SessionState {
+interface HankoSession {
   userID: string;
   jwt: string;
   isValid: boolean;
@@ -11,9 +11,9 @@ interface SessionState {
   error: string | null;
 }
 
-export function useSessionData() {
+export function useSessionData(): HankoSession {
   const [hanko, setHanko] = useState<Hanko>();
-  const [sessionState, setSessionState] = useState<SessionState>({
+  const [sessionState, setSessionState] = useState<HankoSession>({
     userID: "",
     jwt: "",
     isValid: false,

@@ -3,16 +3,23 @@ import { Hanko } from "@teamhanko/hanko-elements";
 
 const hankoApi = process.env.NEXT_PUBLIC_HANKO_API_URL || "";
 
-export function useUserData() {
+interface HankoUser {
+  id: string;
+  email: string;
+  loading: boolean;
+  error: string | null;
+}
+
+export function useUserData(): HankoUser {
   const [hanko, setHanko] = useState<Hanko>();
-  const [userState, setUserState] = useState({
+  const [userState, setUserState] = useState<HankoUser>({
     id: "",
     email: "",
     loading: true,
     error: null,
   });
 
-  useEffect(() => { 
+  useEffect(() => {
     import("@teamhanko/hanko-elements").then(({ Hanko }) =>
       setHanko(new Hanko(hankoApi))
     );
@@ -31,6 +38,3 @@ export function useUserData() {
 
   return userState;
 }
-
-
-
