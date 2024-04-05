@@ -1,10 +1,13 @@
+import { fetchCurrentUser } from '@/lib/fetchCurrentUser';
 import dynamic from 'next/dynamic';
-// import { useUserData } from "@/hooks/useUserData";
+import { useUserData } from "@/hooks/useUserData";
 // import { useSessionData } from "@/hooks/useSessionData";
 
 const HankoProfile = dynamic(() => import('@/components/hanko/HankoProfile'), { ssr: false })
 
-const DashboardPage = () => {
+const DashboardPage = async () => {
+  const user = await fetchCurrentUser()
+
   // const { id, email, loading: userDataLoading, error: userDataError } = useUserData();
   // const { userID, jwt, isValid, loading: sessionDataLoading, error: sessionDataError } = useSessionData();
 
@@ -20,7 +23,7 @@ const DashboardPage = () => {
       <div>{userID}</div>
       <div>{jwt} </div>
       <div>{isValid? "session is valid" : "not valid"} </div> */}
-      <HankoProfile />  
+      <HankoProfile />
     </div>
   );
 };
