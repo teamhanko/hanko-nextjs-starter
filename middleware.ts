@@ -1,33 +1,34 @@
 import { NextResponse, NextRequest } from "next/server";
 
-import { jwtVerify, createRemoteJWKSet } from "jose";
-
 const hankoApiUrl = process.env.NEXT_PUBLIC_HANKO_API_URL;
 
 export async function middleware(req: NextRequest) {
 
-  const hanko = req.cookies.get("hanko")?.value;
-  const tenant_id = req.cookies.get("hanko")?.value;
+  const token = req.cookies.get("hanko")?.value;
 
-  const options = {method: 'GET'};
+  try {
+    const response = await fetch(hankoApiUrl + '/sessions/validate', {
+      method: 'GET',
+      headers: {
+        'Cookie': `hanko=${token}` // If using cookie
+        // 'Authorization': `Bearer ${token}` // If using Authorization header
+      }
+    });
 
-  fetch(hankoApiUrl + '/sessions/validate', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.log(err));
+    if (!response.ok) {
+      throw new Error('Session validation failed');
+    }
+    
+    const data = await response.json();
+    console.log(data)
+    
+    if(!data.is_valid){
+      throw new Error('JWT is not valid');
+    }
 
-
-
-  // Original verification with JWKSet's
-  // const JWKS = createRemoteJWKSet(
-  //   new URL(`${hankoApiUrl}/.well-known/jwks.json`)
-  // );
-
-  // try {
-  //   const verifiedJWT = await jwtVerify(hanko ?? "", JWKS);
-  // } catch {
-  //   return NextResponse.redirect(new URL("/login", req.url));
-  // }
+  } catch (error) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
 }
 export const config = {
   matcher: ["/dashboard"],
