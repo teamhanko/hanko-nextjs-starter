@@ -24,7 +24,7 @@ export default function HankoAuth() {
 
   useEffect(
     () =>
-      hanko?.onSessionCreated(() => {
+      hanko?.onAuthFlowCompleted(() => {
         redirectAfterLogin();
       }),
     [hanko, redirectAfterLogin]
@@ -33,7 +33,6 @@ export default function HankoAuth() {
   useEffect(() => {
     register(hankoApi).catch((error) => {
       // handle error
-      console.log(error);
     });
   }, []);
 
