@@ -19,11 +19,7 @@ export function useUserData(): HankoUser {
     error: null,
   });
 
-  useEffect(() => {
-    import("@teamhanko/hanko-elements").then(({ Hanko }) =>
-      setHanko(new Hanko(hankoApi))
-    );
-  }, []);
+  useEffect(() => setHanko(new Hanko(hankoApi)), []);
 
   useEffect(() => {
     hanko?.user
