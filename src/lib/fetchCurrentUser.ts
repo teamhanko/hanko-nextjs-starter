@@ -1,70 +1,40 @@
-// import { cookies } from "next/headers";
-// import { redirect } from "next/navigation";
-// import * as jose from "jose";
-
-// const hankoApiUrl = process.env.NEXT_PUBLIC_HANKO_API_URL;
-
-// export async function fetchCurrentUser() {
-//   const token = cookies().get("hanko")?.value;
-
-//   if (!token) {
-//     return redirect("/login");
-//   }
-
-//   const JWKS = jose.createRemoteJWKSet(
-//     new URL(`${hankoApiUrl}/.well-known/jwks.json`)
-//   );
-
-//   let payload;
-
-//   try {
-//     const verifiedJWT = await jose.jwtVerify(token, JWKS);
-//     payload = verifiedJWT.payload;
-//   } catch {
-//     return redirect("/login");
-//   }
-
-//   const userID = payload.sub;
-
-//   const response = await fetch(`${hankoApiUrl}/users/${userID}`, {
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
-
-//   if (!response.ok) {
-//     return redirect("/login");
-//   }
-
-//   const userData = await response.json();
-
-//   return userData;
-// }
-
 import { cookies } from "next/headers";
-import * as jose from "jose";
 
-const hankoApiUrl = process.env.NEXT_PUBLIC_HANKO_API_URL;
+const hankoApiUrl = process.env.NEXT_PUBLIC_HANKO_API_URL || '';
 
 export async function fetchCurrentUser() {
-  const token = cookies().get("hanko")?.value;
-  const payload = jose.decodeJwt(token ?? "");
+  try {
+    const cookieToken = (await cookies()).get("hanko")?.value;
 
-  const userID = payload.sub;
-  const email = payload.email;
-  console.log(payload)
-  console.log(email)
+    const validationOptions = { 
+      method: 'GET',
+      headers: {
+        'Cookie': `hanko=${cookieToken}` // If using cookie
+        // 'Authorization': `Bearer ${token}` // If using Authorization header
+      }
+    }
 
-  const response = await fetch(`${hankoApiUrl}/users/${userID}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+    const validationResponse = await fetch(hankoApiUrl + '/sessions/validate', validationOptions); //Get session data
+    if (!validationResponse.ok) {
+      throw new Error("validation was not succesfull");
+    }
+    const validationData = await validationResponse.json();
 
-  if (!response.ok) {
-    return null;
-  }
+    if(!validationData.is_valid){ //Validate session data
+      throw new Error("validation was not succesfull");
+    }
 
-  const userData = await response.json();
-  return userData;
+    const userid = validationData.user_id; //use user id to request data
+    const userResponse = await fetch(hankoApiUrl + '/users/' + userid, validationOptions);
+    if (!userResponse.ok) {
+      throw new Error("Could not get user data");
+    }
+    const userData = await userResponse.json();
+
+    return userData;
+
+    } catch (error) {
+      console.log(error)
+      return null;
+    }
 }
