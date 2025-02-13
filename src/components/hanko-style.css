@@ -1,0 +1,53 @@
+
+/* For more information on customization of hanko elements go to https://docs.hanko.io/guides/hanko-elements/customize-appearance */
+
+@media (prefers-color-scheme: dark) {
+  hanko-auth,
+  hanko-profile {
+    /* Color Scheme */
+    --color: #ffffff;
+    --color-shade-1: rgb(174, 135, 142);
+    --color-shade-2: rgba(226, 188, 193, 0.306);
+  
+    --brand-color: rgb(255, 46, 76);
+    --brand-color-shade-1: rgb(255, 84, 109);
+    --brand-contrast-color: white;
+  
+    --background-color: transparent;
+    --error-color: rgb(190, 48, 70);
+    --link-color: rgb(255, 46, 76);
+
+  }
+  hanko-auth::part(container){
+    --background-color: rgba(0, 0, 0, 0.32);
+  }
+}  
+
+hanko-auth{
+  /* Font Styles */
+  --font-weight: 400;
+  --font-size:1.7vh;
+  --font-family: sans-serif;
+
+  /* Item Styles */
+  --item-height: 60px;
+  --item-margin: 0.5rem 0;
+
+  /* Container Styles */
+  --container-padding: 50px;
+  --container-max-width:700px;
+}
+
+hanko-profile{
+
+  /* Font Styles */
+  --font-size:1.5vh;
+
+  /* Container Styles */
+  --container-padding: 10px;
+  --container-max-width:400px;
+
+  /* Item Styles */
+  --item-height: 30px;
+
+}
