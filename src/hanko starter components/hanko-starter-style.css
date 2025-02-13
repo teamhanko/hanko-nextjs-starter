@@ -58,11 +58,19 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 6%;
+  gap: 45px;
   padding: 4%;
 
   background-color: var(--containerBackground);
 }
+
+.starterInfo > :nth-child(2){
+  padding-bottom: 60px;
+}
+.starterInfo > :nth-child(3){
+  padding-bottom: 130px;
+}
+
 
 .starterInfo h1{
   color: var(--HightlightColor);
@@ -139,7 +147,7 @@
   justify-content: center;
   flex-direction: column;
   padding: 5%;
-  gap: 1%;
+  gap: 10px;
 
   border: solid var(--containerBackground) 2px;
 }
