@@ -3,6 +3,7 @@ import HankoAuth from "@/components/HankoAuth";
 export default function Home() {
   return (
     <div>
+      <title>Hanko Next.js starter</title>
       <HankoStarterInfo/>    
       <HankoAuth/>    
     </div>
