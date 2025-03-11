@@ -15,18 +15,20 @@ const HankoStarterHeader = () => {
 
   const pathname = usePathname()
 
-  let menu =           
-  <Link href={'/profile'}>
-    <button>Profile</button>
-  </Link>;
+  let menu =  (
+    <Link href={'/profile'}>
+      <button>Profile</button>
+    </Link>
+  )     
+
 
   if(pathname.includes('profile')){
-    menu = 
-    <Link href={'/dashboard'}>
-      <button>Dashboard</button>
-    </Link>
+    menu = (
+      <Link href={'/dashboard'}>
+        <button>Dashboard</button>
+      </Link>
+    )
   }
-
   
   return (
     <div className='starterHeader'>
