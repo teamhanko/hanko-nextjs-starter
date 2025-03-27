@@ -6,11 +6,9 @@ export async function validateCurrentSession(){
     const cookieToken = allCookies.get("hanko")?.value;
 
     const validationOptions = { 
-        method: 'GET',
-        headers: {
-            'Cookie': `hanko=${cookieToken}` // If using cookie
-            // 'Authorization': `Bearer ${token}` // If using Authorization header
-        }
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: `{"session_token":"${cookieToken}"}`
     }
 
       try {
