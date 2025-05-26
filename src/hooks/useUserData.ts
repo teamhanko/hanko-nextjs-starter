@@ -22,14 +22,18 @@ export function useUserData(): HankoUser {
   useEffect(() => setHanko(new Hanko(hankoApi)), []);
 
   useEffect(() => {
-    hanko?.user
-      .getCurrent()
-      .then(({ id, email }) => {
-        setUserState({ id, email, loading: false, error: null });
-      })
-      .catch((error) => {
-        setUserState((prevState) => ({ ...prevState, loading: false, error }));
+
+    hanko?.getUser().then((user) =>{
+      setUserState({ 
+        id: user.user_id ?? "Undefined", 
+        email: user.emails?.[0].address ?? "Undefined",
+        loading: false,
+        error: null
       });
+    }).catch((error) => {
+      setUserState((prevState) => ({ ...prevState, loading: false, error }));
+    })
+
   }, [hanko]);
 
   return userState;

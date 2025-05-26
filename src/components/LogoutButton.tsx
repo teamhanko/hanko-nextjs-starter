@@ -14,7 +14,7 @@ export default function LogoutBtn() {
  
   const logout = async () => {
     try {
-      await hanko?.user.logout();
+      await hanko?.logout();
 
       router.replace("/");//Path user gets redirected to after logging out.
       
