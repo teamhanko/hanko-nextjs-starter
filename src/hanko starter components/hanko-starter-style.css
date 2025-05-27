@@ -1,0 +1,282 @@
+/* Light mode color sche,e */
+:root {
+  --containerBackground: #ffffff7b;
+  --headerBackground:  #0f0707;
+  --textColor: rgb(103, 103, 103);
+  --HightlightColor: rgb(47, 91, 212);
+  --HightlightColorFaded: rgba(47, 91, 212, 0.709);
+}
+
+/* Dark mode color scheme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --containerBackground: rgba(0, 0, 0, 0.32);
+    --textColor: rgb(255, 255, 255);
+    --HightlightColor: rgb(255, 46, 76);
+    --HightlightColorFaded: rgba(255, 46, 77, 0.7);
+  }
+  .userMenu .userInfo img{
+    filter: invert() !important;
+  }
+}
+
+@media (max-aspect-ratio: 3/3) {
+  .starterInfo{
+    display: none !important;
+  }
+  .hankoStarterDashboard{
+    width: 100vw !important;
+  }
+
+  .starterHeader{
+    height: 10vh !important;
+    scale: 100% !important;
+    padding-right: 3vw !important;
+  }
+
+  body:has(.userInfo:hover){
+    padding-top: 20vh !important;
+    transition: 100ms;
+  }
+  body:has(.userInfo:active){
+    padding-top: 20vh !important;
+    transition: 100ms;
+  }
+  body:has(.starterHeader){
+    padding-top: 17h !important;
+    transition: 100ms;
+  }
+}
+
+
+.starterInfo{
+  position: absolute;
+  width: 37vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 45px;
+  padding: 4%;
+
+  background-color: var(--containerBackground);
+}
+
+.starterInfo > :nth-child(2){
+  padding-bottom: 60px;
+}
+.starterInfo > :nth-child(3){
+  padding-bottom: 130px;
+}
+
+
+.starterInfo h1{
+  color: var(--HightlightColor);
+  font-size: 2.1vw;
+}
+.starterInfo h2 span{
+  color: var(--HightlightColor);
+}
+.starterInfo h2{
+  font-size: 1.24vw;
+  color: var(--textColor);
+}
+.starterInfo button{
+  max-width: 50%;
+  height: 100%;
+  padding: 1.5%;
+  text-align: start;
+  background-color: transparent;
+  border: var(--HightlightColorFaded) solid 1.5px;
+  border-radius: 6px;
+  color: var(--HightlightColorFaded);
+  font-size: 140%;
+  margin-left: 10px;
+  transition: 400ms;
+}
+
+.starterInfo button:hover{
+  color: var(--textColor);
+  border: var(--HightlightColor) solid 1.5px;
+  box-shadow: var(--HightlightColor) 0px 0px 10px,var(--HightlightColorFaded) 0px 0px 20px inset;
+  transition: ease-out 150ms, box-shadow 500ms, border 300ms;
+  cursor: pointer;
+}
+.starterInfo button:active{
+  border: var(--textColor) solid 1.5px;
+  box-shadow: var(--textColor) 0px 0px 10px,rgba(255, 255, 255, 0.286) 0px 0px 20px inset;
+  transition: ease-out 20ms;
+  scale: 95%;
+}
+.starterInfo button{
+  width: fit-content;
+}
+.starterInfo div{
+  display: block;
+  gap: 10px;
+}
+.starterInfo div button{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.starterLink{
+  text-decoration: underline;
+}
+
+.starterLink:hover{
+  color: var(--textColor);
+  transition: 200ms;
+  text-shadow: var(--textColor) 0px 0px 10px;
+}
+.starterLink:active{
+  color: var(--HightlightColorFaded);
+  text-shadow: var(--HightlightColorFaded) 0px 0px 10px;
+}
+
+.hankoStarterDashboard{
+  width: 64vh;
+  height: fit-content;
+  max-width: 783px;
+  background-color: var(--containerBackground);
+
+  transition: 1ms;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5%;
+  gap: 10px;
+
+  border: solid var(--containerBackground) 2px;
+}
+
+.hankoStarterDashboard h1{
+  font-size: 4.4vh;
+  color: var(--HightlightColor);
+  width: 100%;
+}
+.hankoStarterDashboard h2{
+  font-size: 2.25vh;
+  color: var(--textColor);
+  width: 100%;
+}
+.hankoStarterDashboard h3{
+  font-size: 2.4vh;
+  width: 100%;
+  color: var(--HightlightColor);
+}
+.starterHeader{
+  position: fixed;
+  right: 1vw;
+  top: 1vw;
+
+  width: 100%;
+  height: 8vh;
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 2vw;
+
+}
+
+.userMenu{
+  box-sizing: border-box;
+
+  border-right: solid var(--HightlightColor);
+  border-radius: 5px;
+
+  height: 2.2vh;
+}
+
+.headerGap{
+  width: 5%;
+}
+
+.userMenu:hover{
+  height: 9.2vh;
+  margin-top: 7vh;
+  border-right: solid var(--HightlightColor);
+  transition: 100ms;
+  cursor: pointer;
+}
+
+.userMenu .userInfo{
+  display: flex;
+}
+
+.userMenu .userInfo img{
+  height: 2.4vh;
+  filter: invert() brightness(0.2);
+}
+
+.userMenu h1{
+  font-size: 23px;
+  height: 2.2vh;
+
+  border-radius: 5px;
+  padding: 0 12px 0 12px;
+  
+  font-weight: lighter;
+
+  box-sizing: border-box;
+}
+.userMenu:hover h1{
+  border-right: none;
+}
+.userMenu .expandIcon{
+  scale: 60%;
+  padding-right: 5px;
+}
+
+.userMenu .userDropdown{
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+}
+.userMenu:hover .userDropdown{
+  width: 100%;
+  height: 7vh;
+  padding-top: 0.5vh;
+}
+.userMenu .userDropdown button{
+  width: 0;
+  height: 0;
+  border: none;
+  font-size: 0;
+  margin-right: 12px;
+  background-color: transparent;
+  text-align: right;
+}
+.userMenu:hover .userDropdown button{
+  width: fit-content;
+  height: 3vh;
+  font-size: 23px;
+  color: var(--HightlightColorFaded);
+  padding-left: 6px;
+
+  transition: height 100ms;
+  transition: 100ms, margin-right 300ms;
+
+}
+
+.userMenu:hover .userDropdown button:hover{
+  color: var(--HightlightColor);
+  border-left: var(--HightlightColorFaded) solid;
+  border-radius: 3px;
+  margin-right: 24px;
+  transition: 100ms, margin-right 300ms;
+  cursor: pointer;
+}
+
+.userMenu:hover .userDropdown button:active{
+  color: var(--textColor);
+  border-left: var(--textColor) solid;
+  padding-left: 5px;
+  border-radius: 5px;
+  transition: padding-left 50ms;
+  scale: 95%;
+  cursor: pointer;
+}
